@@ -19,7 +19,7 @@ const Header = () => {
           </div>
           <div className="flex flex-col leading-tight">
             <div className="my-1  flex items-center font-bold text-[24px]">
-              Trip 4
+              Trip 1
             </div>
           </div>
         </div>
@@ -40,14 +40,14 @@ const Header = () => {
           <div className="flex flex-col leading-tight">
             <div className="mt-1 text-[16px] flex items-center">
               From
-              <span className="text-gray-700 font-bold text-[20px]">
-                &nbsp;Hello world
+              <span className="text-black font-bold text-[20px]">
+                &nbsp;IGI Airport, T3
               </span>
             </div>
             <div className="text-[16px] flex items-center">
               To
-              <span className="text-lg text-gray-600  font-bold  ml-2">
-                By World
+              <span className="text-lg text-black  font-bold  ml-2">
+                Sector 28
               </span>
             </div>
           </div>
