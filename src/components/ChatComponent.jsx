@@ -16,7 +16,10 @@ function ChatComponent() {
     const fetchChats = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(apiUrl);
+        const response = await axios.get(apiUrl,{
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+      });
         const newChats = response.data.chats;
 
         // Append new chats to the existing list
@@ -66,7 +69,10 @@ function ChatComponent() {
     try {
       setIsLoading(true);
       const nextPageUrl = `http://3.111.128.67/assignment/chat?page=${currentPage}`;
-      const response = await axios.get(nextPageUrl);
+      const response = await axios.get(nextPageUrl,{
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    });
       const newChats = response.data.chats;
 
       // Append new chats to the existing list
