@@ -44,7 +44,9 @@ Start the server
 
 ## Deployment
 
-This application is also deployed to render.com[&nbsp;Live Demo](https://pwa-chat-application.onrender.com)
+This application is also deployed to Vercel[&nbsp;Live Demo](https://pwa-chat-application.vercel.app/)
+<br/>
+If it does not work then use this[&nbsp;Link](https://pwa-chat-application.onrender.com)
 
 
 ## API Reference
@@ -67,12 +69,12 @@ The application fetches chat data from the following API:
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img width="181" alt="Screenshot 2023-05-25 223030" src="https://github.com/Atanu-Kumar-Dey/College-Hackathon-website-frontend/assets/83961023/5e906691-663f-4976-828e-3af445774d47">
+<img width="181" alt="Screenshot 2023-05-25 223015" src="https://github.com/Atanu-Kumar-Dey/College-Hackathon-website-frontend/assets/83961023/05fbe415-baaf-4a4a-a754-1be9f7ecd2e5">
+<img width="181" alt="Screenshot 2023-05-25 223231" src="https://github.com/Atanu-Kumar-Dey/College-Hackathon-website-frontend/assets/83961023/4ef2bbc5-5f6c-46f4-9394-71330d5a95d8">
+<img width="181" alt="Screenshot 2023-05-25 223249" src="https://github.com/Atanu-Kumar-Dey/College-Hackathon-website-frontend/assets/83961023/1056d87f-6c62-4438-ad36-4dfb47354a8b">
+<img width="336" alt="Screenshot 2023-05-25 223601" src="https://github.com/Atanu-Kumar-Dey/College-Hackathon-website-frontend/assets/83961023/5d0bc514-372c-41e4-a848-481fae6cd523">
+<img width="960" alt="Screenshot 2023-05-25 222927" src="https://github.com/Atanu-Kumar-Dey/College-Hackathon-website-frontend/assets/83961023/adebdc36-3371-4d29-ac8f-3e408ef2abee">
 
 ## Troubleshoot 
 
