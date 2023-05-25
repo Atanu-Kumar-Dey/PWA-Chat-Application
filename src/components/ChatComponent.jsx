@@ -10,7 +10,7 @@ function ChatComponent() {
 
   useEffect(() => {
     // Mock API endpoint with pagination support
-    const apiUrl = `https://3.111.128.67/assignment/chat?page=${currentPage}`;
+    const apiUrl = `http://3.111.128.67/assignment/chat?page=${currentPage}`;
 
     // Fetch chats from the API
     const fetchChats = async () => {
@@ -68,7 +68,7 @@ function ChatComponent() {
   const fetchNextPage = async () => {
     try {
       setIsLoading(true);
-      const nextPageUrl = `https://3.111.128.67/assignment/chat?page=${currentPage}`;
+      const nextPageUrl = `http://3.111.128.67/assignment/chat?page=${currentPage}`;
       const response = await axios.get(nextPageUrl,{
         'Content-Type': 'application/json',
         'Accept': 'application/json'
