@@ -1,40 +1,47 @@
-const CACHE_NAME = "version-1";
-const urlsToCache = ["index.html", "offline.html"];
+const CACHE_NAME = "my-site-cache-v1";
+const assets = ["/offline.html"];
 
-const self = this; // self is the service worker itself
 
-// Install SW
-self.addEventListener("install", (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then((caches) => {
-            console.log("opened Cache");
-            return caches.addAll(urlsToCache);
+self.addEventListener("install", (evt) => {
+    // console.log("service worker installed");
+    evt.waitUntil(
+        caches.open(CACHE_NAME).then((cache) => {
+            console.log("caching shell assets");
+            cache.addAll(assets);
         })
     );
 });
 
-self.addEventListener("fetch", (event) => {
-    event.respondWith(
-        caches.match(event.request).then(() => {
-            return fetch(event.request).catch(() => {
-                caches.match("offline.html");
-            });
-        })
-    );
-});
-
-self.addEventListener("activate", (event) => {
-    const cacheWhiteList = [];
-    cacheWhiteList.push(CACHE_NAME);
-    event.waitUntil(
-        caches.keys().then((cacheName) => {
-            Promise.all(
-                cacheName.map((cacheName) => {
-                    if (!cacheWhiteList.includes[cacheName]) {
-                        return caches.delete(cacheName);
-                    }
-                })
+// activate event
+self.addEventListener("activate", (evt) => {
+    //console.log('service worker activated');
+    evt.waitUntil(
+        caches.keys().then((keys) => {
+            //console.log(keys);
+            return Promise.all(
+                keys
+                .filter((key) => key !== staticCacheName && key !== dynamicCacheName)
+                .map((key) => caches.delete(key))
             );
+        })
+    );
+});
+
+// fetch event
+self.addEventListener("fetch", (evt) => {
+    //console.log('fetch event', evt);
+    evt.respondWith(
+        caches.match(evt.request).then(response => {
+            // Return the cached response if available
+            if (response) {
+                return response;
+            }
+            // Fallback to the custom offline page
+            if (!navigator.onLine) {
+                return caches.match(assets);
+            }
+            // Fetch the requested resource from the network
+            return fetch(evt.request);
         })
     );
 });

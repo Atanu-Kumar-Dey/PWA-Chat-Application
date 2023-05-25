@@ -158,7 +158,7 @@ function ChatComponent() {
                       </svg>
                     </span>
                     <img
-                      src={chat.sender.image}
+                      src={chat.sender.image} alt="user img"
                       className="w-7 h-7 rounded-full"
                     />
                   </div>
