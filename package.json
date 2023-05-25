@@ -43,5 +43,5 @@
         "postcss": "^8.4.23",
         "tailwindcss": "^3.3.2"
     },
-    "proxy": "http://3.111.128.67/"
+    "proxy": "http://3.111.128.67/assignment/chat"
 }
