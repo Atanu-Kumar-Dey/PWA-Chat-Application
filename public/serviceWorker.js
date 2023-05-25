@@ -1,32 +1,52 @@
 const CACHE_NAME = "my-site-cache-v1";
-const urlsToCache = [
+const assets = [
     "/",
     "/index.html",
+    "/src/App.jsx",
     "/favicon.ico",
-    "/src/components/offline.jsx",
+    "/src/offline.html",
 ];
-// service worker install event
-this.addEventListener("install", (event) => {
-    event.waitUntil(
+self.addEventListener("install", (evt) => {
+    // console.log("service worker installed");
+    evt.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            console.log("Opened cache");
-            return cache.addAll(urlsToCache);
+            console.log("caching shell assets");
+            cache.addAll(assets);
         })
     );
 });
 
+// activate event
+self.addEventListener("activate", (evt) => {
+    //console.log('service worker activated');
+    evt.waitUntil(
+        caches.keys().then((keys) => {
+            //console.log(keys);
+            return Promise.all(
+                keys
+                .filter((key) => key !== staticCacheName && key !== dynamicCacheName)
+                .map((key) => caches.delete(key))
+            );
+        })
+    );
+});
 
-// service worker fetch event   
-this.addEventListener("fetch", (event) => {
-    if (!navigator.onLine) {
-        event.respondWith(
-            caches.match(event.request).then((response) => {
-                if (response) {
-                    return response;
-                }
-                let requestUrl = event.request.clone();
-                return fetch(requestUrl);
-            })
-        );
-    }
+// fetch event
+self.addEventListener("fetch", (evt) => {
+    //console.log('fetch event', evt);
+    evt.respondWith(
+        caches
+        .match(evt.request)
+        .then((cacheRes) => {
+            return (
+                cacheRes ||
+                fetch(evt.request).then(async(fetchRes) => {
+                    const cache = await caches.open(dynamicCacheName);
+                    cache.put(evt.request.url, fetchRes.clone());
+                    return fetchRes;
+                })
+            );
+        })
+        .catch(() => caches.match("/src/offline.html"))
+    );
 });
